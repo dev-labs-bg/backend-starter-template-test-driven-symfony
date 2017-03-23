@@ -1,0 +1,12 @@
+{
+    "name": "devlabs/user-bundle",
+    "authors": [
+        {
+            "name": "Nikolay",
+            "email": "n.atanasow94@gmail.com"
+        }
+    ],
+    "require": {
+        "nesbot/carbon": "^1.22"
+    }
+}

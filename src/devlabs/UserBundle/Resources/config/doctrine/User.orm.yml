@@ -1,0 +1,49 @@
+devlabs\UserBundle\Entity\User:
+    type: entity
+    table: user
+    repositoryClass: devlabs\UserBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            scale: 0
+            length: 100
+            unique: false
+            nullable: false
+            precision: 0
+        password:
+            type: string
+            scale: 0
+            length: 100
+            unique: false
+            nullable: false
+            precision: 0
+        gender:
+            type: string
+            scale: 0
+            length: 100
+            unique: false
+            nullable: false
+            precision: 0
+    manyToOne:
+        address:
+            targetEntity: devlabs\UserBundle\Entity\Address
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: users
+            joinColumns:
+                address_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

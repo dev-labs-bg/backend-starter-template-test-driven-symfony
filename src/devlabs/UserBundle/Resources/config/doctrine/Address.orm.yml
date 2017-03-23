@@ -1,0 +1,33 @@
+devlabs\UserBundle\Entity\Address:
+    type: entity
+    table: address
+    repositoryClass: devlabs\UserBundle\Repository\AddressRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        city:
+            type: string
+            scale: 0
+            length: 100
+            unique: false
+            nullable: false
+            precision: 0
+    oneToMany:
+        users:
+            targetEntity: devlabs\UserBundle\Entity\User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: address
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    lifecycleCallbacks: {  }

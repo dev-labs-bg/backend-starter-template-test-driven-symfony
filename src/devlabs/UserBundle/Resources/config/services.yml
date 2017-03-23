@@ -1,0 +1,7 @@
+services:
+     user.service:
+          class: devlabs\UserBundle\Service\UserService
+          arguments: ["@doctrine.orm.default_entity_manager"]
+     address.service:
+          class: devlabs\UserBundle\Service\AddressService
+          arguments: ["@doctrine.orm.default_entity_manager"]
