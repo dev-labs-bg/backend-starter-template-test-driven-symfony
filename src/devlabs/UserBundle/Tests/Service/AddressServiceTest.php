@@ -1,5 +1,4 @@
 <?php
-
 namespace devlabs\UserBundle\Tests\Service;
 
 use Doctrine\ORM\EntityManager;
@@ -38,17 +37,28 @@ class AddressServiceTest extends \PHPUnit_Framework_TestCase
 
     public function getEntityManagerMock(array $mockedMethods)
     {
-        return $entityManager = $this
-            ->getMockBuilder(EntityManager::class)
-            ->setMethods($mockedMethods)
-            ->disableOriginalConstructor()
-            ->getMock();
+        /* return $entityManager = $this */
+        /*     ->getMockBuilder(EntityManager::class) */
+        /*     ->setMethods($mockedMethods) */
+        /*     ->disableOriginalConstructor() */
+        /*     ->getMock(); */
+
+        return $entityManager = $this->getMockBuilder('Doctrine\ORM\EntityManager')
+                                ->setMethods(['getRepository'])
+                                ->disableOriginalConstructor()
+                                ->getMock();
     }
 
     public function getAddressRepositoryMock()
     {
-        return $this->getMockBuilder(AddressRepository::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        /* return $this->getMockBuilder(AddressRepository::class) */
+        /*     ->disableOriginalConstructor() */
+        /*     ->getMock(); */
+
+        $addressRepository = $this->getMockBuilder('TestRepo')
+                            ->setMethods(['getCities'])
+                            ->disableOriginalConstructor()
+                            ->getMock();
+        return $addressRepository;
     }
 }
