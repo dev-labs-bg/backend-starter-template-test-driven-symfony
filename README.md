@@ -7,11 +7,12 @@
 6. `php bin/console doctrine:schema:update --force`
 7. Copy the template for PhpUnit in the repository root folder `cp phpunit.xml.dist phpunit.xml`
 8. Add a test suite entry under the `<testsuites>` tag in `phpunit.xml`:
-`
+
+```
         <testsuite name="Project Test Suite">
 			<directory>./src/devlabs/UserBundle/Tests</directory>
         </testsuite>
-`
+```
 9. In case you wish to use the `pdo_sqlite` database driver (the default configuration), you will need to run `mkdir -p /var/data/`
 10. You can now run the project tests with `/vendor/phpunit/phpunit`.
 Optionally, you can symlink phpunit to the root folder with:
@@ -25,16 +26,17 @@ The point of mocking in this manner is that it allows you to mock classes you do
 
 1. You must pass the methods which you plan to call on the mock object
 
-By default, the `$this->getMockBuilder('ClassName')` will create an faux php class with no methods in it. If you try to call a method on the (empty) mock, you will get an exception. The proper way to do this is to call `setMethods` on the mock you get from `getMockBuilder`. You can see an example of this in the `src/devlabs/UserBundle/Tests/Service/AddressServiceTest.php/` file or the [PHPUnit documentation](https://phpunit.de/manual/current/en/test-doubles.html#test-doubles.mock-objects.examples.SubjectTest.php)
+By default, the `getMockBuilder` function will create a faux php class with no methods in it. If you try to call a method on the (empty) mock, you will get an exception. The proper way to do this is to call `setMethods` on the mock you get from `getMockBuilder`. You can see an example of this in the `src/devlabs/UserBundle/Tests/Service/AddressServiceTest.php/` file or the [PHPUnit documentation](https://phpunit.de/manual/current/en/test-doubles.html#test-doubles.mock-objects.examples.SubjectTest.php)
 
 2. You must mock all functions you call on the mock object
 
-When creating mocks with a class, you have the option of selectively mocking functions or calling the default implementation on the class you are mocking. With classless mocks you don't have this luxury. Every method which gets called on the mock object must be itself mocked, as there is no 'class implementation' to speak of.
+When creating mocks *with a class*, you have the option of selectively mocking functions or calling the default implementation on the class you are mocking. With *classless* mocks you don't have this luxury. Every method which gets called on the mock object must be itself mocked, as there is no 'class implementation' to speak of.
 
 Here's an example of a method mock:
-`$yourMock->expects($this->once())
+
+```$yourMock->expects($this->once())
 	->method('yourMethod')
-	->will($this->returnValue('your_test_data'));`
+	->will($this->returnValue('your_test_data'));```
 
 3. Be careful with [strict type declarations](http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration) when using dependency injection
 
