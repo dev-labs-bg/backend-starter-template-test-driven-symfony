@@ -5,6 +5,9 @@ namespace devlabs\UserBundle\Tests;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\SchemaTool;
 use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\NullOutput;
 
 class DatabasePrimer
 {
@@ -25,5 +28,16 @@ class DatabasePrimer
         $schemaTool->updateSchema($metadatas);
 
         // If you are using the Doctrine Fixtures Bundle you could load these here
+        // load fixtures
+        $application = new Application($kernel);
+		$command = $application->find('doctrine:fixtures:load');
+        /* $application->setAutoExit(false); */
+        $command->run(
+            new ArrayInput([
+                'command' => 'doctrine:fixtures:load',
+                '--append'  => true
+            ]),
+            new NullOutput()
+        );
     }
 }
