@@ -32,26 +32,16 @@ class AddressRepositoryTest extends KernelTestCase
 								->getManager()->getRepository('UserBundle:Address');
 
         // load fixtures
-<<<<<<< HEAD
         $application = new Application(self::$kernel);
-        $application->setAutoExit(false);
-        $application->run(
+		$command = $application->find('doctrine:fixtures:load');
+        /* $application->setAutoExit(false); */
+        $command->run(
             new ArrayInput([
                 'command' => 'doctrine:fixtures:load',
                 '--append'  => true
             ]),
             new NullOutput()
         );
-=======
-        $options = [
-            'command' => 'doctrine:fixtures:load',
-            '--append'  => true,
-			'-q' => true,
-        ];
-        $application = new Application(self::$kernel);
-        $application->setAutoExit(false);
-        $application->run(new ArrayInput($options));
->>>>>>> fa77f00b0d0c61eceaed2f9bae7d799e5fac08bb
     }
 
     public function testGetAllCities()
