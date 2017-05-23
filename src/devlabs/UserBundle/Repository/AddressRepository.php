@@ -25,7 +25,7 @@ class AddressRepository extends EntityRepository
     public function getAddressesByTerm(string $term, int $limit = 5)
     {
 		return $this->createQueryBuilder('a')->where('a.city LIKE :term')
-				->setParameter('term', $term)->setMaxResults($limit)
+				->setParameter('term', $term.'%')->setMaxResults($limit)
 				->getQuery()->getResult();
     }
 }

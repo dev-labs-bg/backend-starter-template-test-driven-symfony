@@ -32,6 +32,7 @@ class AddressRepositoryTest extends KernelTestCase
 								->getManager()->getRepository('UserBundle:Address');
 
         // load fixtures
+<<<<<<< HEAD
         $application = new Application(self::$kernel);
         $application->setAutoExit(false);
         $application->run(
@@ -41,18 +42,28 @@ class AddressRepositoryTest extends KernelTestCase
             ]),
             new NullOutput()
         );
+=======
+        $options = [
+            'command' => 'doctrine:fixtures:load',
+            '--append'  => true,
+			'-q' => true,
+        ];
+        $application = new Application(self::$kernel);
+        $application->setAutoExit(false);
+        $application->run(new ArrayInput($options));
+>>>>>>> fa77f00b0d0c61eceaed2f9bae7d799e5fac08bb
     }
 
     public function testGetAllCities()
     {
 		$cities = $this->addressReposity->getCities();
-        $this->assertCount(1, $cities);
+        $this->assertCount(6, $cities);
     }
 
     public function testGetAddressByTerm()
     {
-		$hints = $this->addressReposity->getAddressesByTerm('foo');
-        $this->assertCount(1, $hints);
+		$hints = $this->addressReposity->getAddressesByTerm('V');
+        $this->assertCount(2, $hints);
     }
 
     /**

@@ -63,7 +63,7 @@ class AddressServiceTest extends \PHPUnit_Framework_TestCase
         /*     ->disableOriginalConstructor() */
         /*     ->getMock(); */
 
-        $addressRepository = $this->getMockBuilder('TestRepo')
+        $addressRepository = $this->getMockBuilder('AddressRepository')
                             ->setMethods(['getCities'])
                             ->disableOriginalConstructor()
                             ->getMock();
