@@ -31,4 +31,18 @@ class AddressService
     {
         return $this->addressReposity->getCities();
     }
+
+	public function getAutocompleteAddresses(string $term) : array
+    {
+        $response = [];
+		$hints = $this->addressReposity->getAddressesByTerm($term);
+		foreach($hints as $hint)
+		{
+			$response[] = array(
+				'city' => $hint->city,
+			);
+		}
+
+        return $response;
+    }
 }

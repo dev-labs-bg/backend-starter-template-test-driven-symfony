@@ -37,6 +37,10 @@ class AddressServiceTest extends \PHPUnit_Framework_TestCase
 
     public function getEntityManagerMock(array $mockedMethods)
     {
+        // NOTE <Yavor>: I've left these here intentionally, so you can see the
+        // diferrences between the classless and standard mocking without
+        // having to switch branches.
+
         /* return $entityManager = $this */
         /*     ->getMockBuilder(EntityManager::class) */
         /*     ->setMethods($mockedMethods) */
@@ -51,6 +55,10 @@ class AddressServiceTest extends \PHPUnit_Framework_TestCase
 
     public function getAddressRepositoryMock()
     {
+        // NOTE <Yavor>: I've left these here intentionally, so you can see the
+        // diferrences between the classless and standard mocking without
+        // having to switch branches.
+
         /* return $this->getMockBuilder(AddressRepository::class) */
         /*     ->disableOriginalConstructor() */
         /*     ->getMock(); */
