@@ -1,6 +1,6 @@
 <?php
 
-namespace devlabs\UserBundle;
+namespace devlabs\UserBundle\Tests;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\SchemaTool;
