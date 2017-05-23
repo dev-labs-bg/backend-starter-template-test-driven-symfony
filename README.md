@@ -34,9 +34,11 @@ When creating mocks *with a class*, you have the option of selectively mocking f
 
 Here's an example of a method mock:
 
-```$yourMock->expects($this->once())
+```
+$yourMock->expects($this->once())
 	->method('yourMethod')
-	->will($this->returnValue('your_test_data'));```
+	->will($this->returnValue('your_test_data'));
+```
 
 3. Be careful with [strict type declarations](http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration) when using dependency injection
 
