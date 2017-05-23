@@ -4,6 +4,8 @@ namespace devlabs\UserBundle\Tests\Repository;
 
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use devlabs\UserBundle\Tests\DatabasePrimer;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
 
 /**
  * Class AddressRepositoryTest
@@ -27,6 +29,15 @@ class AddressRepositoryTest extends KernelTestCase
 		DatabasePrimer::prime(self::$kernel);
         $this->addressReposity = static::$kernel->getContainer()->get('doctrine')
 								->getManager()->getRepository('UserBundle:Address');
+
+        // load fixtures
+        $options = [
+            'command' => 'doctrine:fixtures:load',
+            '--append'  => true,
+        ];
+        $application = new Application(self::$kernel);
+        // $application->setAutoExit(false);
+        $application->run(new ArrayInput($options));
     }
 
     public function testGetAllCities()
