@@ -12,7 +12,8 @@
 			<directory>./src/devlabs/UserBundle/Tests</directory>
         </testsuite>
 `
-9. You can now run the project tests with `/vendor/phpunit/phpunit`.
+9. In case you wish to use the `pdo_sqlite` database driver (the default configuration), you will need to run `mkdir -p /var/data/`
+10. You can now run the project tests with `/vendor/phpunit/phpunit`.
 Optionally, you can symlink phpunit to the root folder with:
 `ln -s /vendor/phpunit/phpunit/ .` on Unix-like systems, and `mklink phpunit /vendor/phpunit/phpunit` on Windows.
 
