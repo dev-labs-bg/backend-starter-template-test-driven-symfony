@@ -21,6 +21,7 @@ class DatabasePrimer
         // Run the schema update tool using our entity metadata
         $metadatas = $entityManager->getMetadataFactory()->getAllMetadata();
         $schemaTool = new SchemaTool($entityManager);
+		$schemaTool->dropSchema($metadatas);
         $schemaTool->updateSchema($metadatas);
 
         // If you are using the Doctrine Fixtures Bundle you could load these here

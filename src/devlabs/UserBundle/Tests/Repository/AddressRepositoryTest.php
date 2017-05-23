@@ -34,22 +34,23 @@ class AddressRepositoryTest extends KernelTestCase
         $options = [
             'command' => 'doctrine:fixtures:load',
             '--append'  => true,
+			'-q' => true,
         ];
         $application = new Application(self::$kernel);
-        // $application->setAutoExit(false);
+        $application->setAutoExit(false);
         $application->run(new ArrayInput($options));
     }
 
     public function testGetAllCities()
     {
 		$cities = $this->addressReposity->getCities();
-        $this->assertCount(1, $cities);
+        $this->assertCount(6, $cities);
     }
 
     public function testGetAddressByTerm()
     {
-		$hints = $this->addressReposity->getAddressesByTerm('foo');
-        $this->assertCount(1, $hints);
+		$hints = $this->addressReposity->getAddressesByTerm('V');
+        $this->assertCount(2, $hints);
     }
 
     /**
