@@ -41,8 +41,71 @@ class Address
      */
     private $city;
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     *
+     * @return Address
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string
+     */
     public function getCity()
     {
         return $this->city;
+    }
+
+    /**
+     * Add user
+     *
+     * @param \devlabs\UserBundle\Entity\User $user
+     *
+     * @return Address
+     */
+    public function addUser(\devlabs\UserBundle\Entity\User $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \devlabs\UserBundle\Entity\User $user
+     */
+    public function removeUser(\devlabs\UserBundle\Entity\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }
